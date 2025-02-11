@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gerenciamento de Karaokê</title>
+    <link rel="stylesheet" href="../css/qrcode.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="../assets/logo.jpg" alt="Logo" style="border-radius: 100%;">
+            <span>Sistema Karaokê</span>
+        </div>
+        <ul>
+            <li onclick="dashboard()"><i>🏠</i><span>Dashboard</span></li>
+            <li onclick="musicas()"><i>🎵</i><span>Músicas</span></li>
+            <li onclick="perfil()"><i>👤</i><span>Perfil</span></li>
+            <li  class="active"><i class="fa-solid fa-qrcode"></i><span>QR Code</span></li>
+        </ul>
+        <div class="bottom-buttons">
+            <button>⚙️ <span>Configurações</span></button>
+            <button onclick="terminarSessao()">🚪 <span>Terminar Sessão</span></button>
+        </div>
+    </div>
+
+    <div class="main-content" style="display: flex; justify-content: center; align-items: center;">
+        <button style="width: 60px; height: 30px;" onclick="gerar()">Gerar</button>
+        <div class="qrcode">
+            <img src="" alt="" id="qr" style="width: 100%; height: 100%;">
+        </div>
+        <button style="width: 90px; height: 30px;" onclick="imprimir()">Ver imagem</button>
+
+    </div>
+
+   <script src="../javascript/qrcode.js"></script>
+</body>
+</html>

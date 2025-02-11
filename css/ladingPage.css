@@ -1,0 +1,232 @@
+*{
+    margin: 0;
+    list-style: none;
+    text-decoration: none;
+    font-family: Arial, Sans Serif;
+}
+body.hidden {
+    display: none; /* Oculta o corpo para evitar o piscar das telas */
+  }
+button{
+    cursor: pointer;
+}
+html{
+    background-color: rgb(63, 61, 61);
+    overflow-x: hidden;
+}
+
+header{
+    width: 100%;
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 1px solid black;
+}
+.logo {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin: 20px 0; /* Ajusta o espaço ao redor da logo */
+    gap: 20px;
+}
+
+.logo img {
+    max-width: 40px; /* Define a largura máxima da imagem */
+    height: auto; /* Mantém a proporção da imagem */
+    border-radius: 100%; /* Adiciona cantos arredondados */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adiciona uma leve sombra */
+}
+
+header nav ul{
+    display: flex;
+}
+ 
+header h3{
+    color: white;
+    font-size: 1em;
+}
+
+header nav ul li a{
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+    font-size: 0.8em
+}
+header nav ul li a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1em;
+}
+.head-container{
+    display: flex;
+    gap: 20px;
+}
+main{
+    background-color: white;
+}
+.Buner1{
+    width: 100%;
+    height: 500px;
+    background-color: black;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Buner1 section{
+    width: 40%;
+    height: 400px;
+    margin: 1px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10%;
+}
+.inicio{
+    color: white;
+}
+.inicio > p{
+    text-align: justify;
+    margin-top: 50px;
+    margn-left: 1em;
+}
+
+.imagem{
+    background-color: black;
+
+}
+.Buner2 {
+    width: 100%;
+    height: 500px;
+    background-image: url(../assets/background\ session.jpg);
+    background-size: cover; /* Garante que a imagem ocupe todo o espaço */
+    background-position: center; /* Centraliza a imagem */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Buner2 .sobre {
+    background-color: rgba(0, 0, 0, 0.6); /* Fundo semitransparente para destacar o texto */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 600px; /* Limita a largura do texto */
+    font-family: Arial, sans
+}
+
+.Buner3 {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    background-color:black; /* Fundo preto */
+    padding: 50px 20px;
+    gap: 20px; /* Espaço entre as seções */
+    color: white;
+}
+
+.faq-content {
+    width: 50%; /* Largura da seção de perguntas */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.faq h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: left;
+    color: white;
+}
+
+.faq-item {
+    margin-bottom: 15px;
+    border: 1px solid #444; /* Borda cinza escura */
+    border-radius: 5px;
+    overflow: hidden;
+    background-color: #1f1f1f;
+}
+
+.faq-question {
+    width: 100%;
+    padding: 15px;
+    background-color: #333; /* Botão cinza escuro */
+    color: white;
+    text-align: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    font-size: 1.2em;
+    transition: background-color 0.3s ease;
+}
+
+.faq-question:hover {
+    background-color: #555;
+}
+
+.faq-answer {
+    display: none;
+    padding: 15px;
+    color: #ccc;
+    border-top: 1px solid #444;
+}
+
+.faq-image {
+    width: 50%; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.faq-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5); 
+}
+
+
+footer {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    background-color: rgb(63, 61, 61);
+    padding: 40px 20px;
+    color: white;
+
+}
+
+footer section {
+    width: 20%;
+}
+
+footer h3 {
+    margin-bottom: 15px;
+    font-size: 1.2em;
+}
+
+footer .Contactos p, 
+footer .NavegacaoRapida p,
+footer .Patrocinios p {
+    margin-bottom: 10px;
+    font-size: 0.9em;
+}
+.logoMaior img{
+    width: 150px;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 100%;
+}
+footer a{
+    color: white;
+    text-decoration: none;
+    margin: 10px;
+}
+footer a:hover{
+    text-decoration: underline;
+    font-weight: bold;
+    font-size: 1em;
+}

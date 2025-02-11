@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fila de Músicas</title>
+    <link rel="stylesheet" href="../css/verfilacliente.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+   
+</head>
+<body>
+    <div class="container">
+        <h1>Fila de Músicas</h1>
+        <div class="queue-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Posição</th>
+                        <th>Nome</th>
+                        <th>Música</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody id="queue-list">
+                    <!-- Conteúdo gerado dinamicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script>
+        const queueList = document.getElementById("queue-list");
+        let queue = [];
+        const userName = localStorage.getItem("userName");
+
+        async function fetchQueue() {
+            try {
+                const response = await fetch("http://localhost:3000/fila");
+                queue = await response.json();
+                displayQueue();
+            } catch (error) {
+                console.error("Erro ao buscar a fila:", error);
+            }
+        }
+
+        function displayQueue() {
+            queueList.innerHTML = "";
+            queue.forEach((entry, index) => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td>${entry.name}</td>
+                    <td>${entry.song}</td>
+                    <td>
+                        ${entry.name === userName ? `<button class="leave-button" onclick="leaveQueue()">Sair</button>` : ""}
+                    </td>
+                `;
+                queueList.appendChild(row);
+            });
+        }
+
+        function leaveQueue() {
+            fetch("http://localhost:3000/fila/sair", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ name: userName })
+            }).then(() => fetchQueue());
+        }
+
+        setInterval(fetchQueue, 3000);
+        fetchQueue();
+    </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gerenciamento de Karaokê</title>
+    <link rel="stylesheet" href="../css/Dashboard.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="../assets/logo.jpg" alt="Logo" style="border-radius: 100%;">
+            <span>Sistema Karaokê</span>
+        </div>
+        <ul>
+            <li class="active"><i>🏠</i><span>Dashboard</span></li>
+            <li onclick="musicas()"><i>🎵</i><span>Músicas</span></li>
+            <li onclick="perfil()"><i>👤</i><span>Perfil</span></li>
+            <li onclick="qrcode()"><i class="fa-solid fa-qrcode"></i><span>QR Code</span></li>
+        </ul>
+        <div class="bottom-buttons">
+            <button>⚙️ <span>Configurações</span></button>
+            <button onclick="terminarSessao()">🚪 <span>Terminar Sessão</span></button>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="main-header">
+            <div class="toggle-button" onclick="toggleSidebar()">
+                <i class="fa-solid fa-bars"></i>
+            </div>
+            <div class="user-img">
+                <img src="user.jpg" alt="Foto do Usuário">
+            </div>
+        </div>
+
+        <button class="delete-selected" id="deleteSelected" onclick="deleteSelected()">Apagar Selecionados</button>
+
+        <div class="queue">
+            <h3>Fila de Clientes</h3>
+            <table id="queue-table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Música</th>
+                        <th>Status</th>
+                        <th>Eliminar</th>
+                        <th>Seleccionar</th>
+                    </tr>
+                </thead>
+                <tbody id="queue-body">
+                </tbody>
+            </table>
+            <div class="no-queue" id="no-queue">Nenhum cliente na fila no momento.</div>
+        </div>
+    </div>
+
+    <script src="../javascript/Dashboard.js"></script>
+</body>
+</html>

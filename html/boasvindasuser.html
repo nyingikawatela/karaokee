@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Músicas</title>
+    <link rel="stylesheet" href="../css/welcomeuser.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+   
+</head>
+<body>
+    <div class="welcome-screen" id="welcome-screen">
+        <h1>Bem-vindo!</h1>
+        <p>Por favor, insira seu nome para continuar:</p>
+        <input type="text" id="username" placeholder="Digite seu nome">
+        <button onclick="enterApp()">Entrar</button>
+    </div>
+    
+    
+    <script>
+        const songList = document.getElementById("songs-list");
+        const searchInput = document.getElementById("search-input");
+        const noSongsMessage = document.getElementById("no-songs");
+        const welcomeScreen = document.getElementById("welcome-screen");
+        const musicContainer = document.getElementById("music-container");
+        let songs = [];
+
+        function enterApp() {
+            const username = document.getElementById("username").value.trim();
+            if (username) {
+                localStorage.setItem("username", username);
+            } else {
+                alert("Por favor, insira seu nome.");
+            }
+        }        
+    </script>
+</body>
+</html>

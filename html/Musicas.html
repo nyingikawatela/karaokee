@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Músicas</title>
+    <link rel="stylesheet" href="../css/Musicas.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <img src="../assets/logo.jpg" alt="Logo" style="border-radius: 100%;">
+            <span>Sistema Karaokê</span>
+        </div>
+        <ul>
+            <li onclick="dashboard()"><i>🏠</i><span>Dashboard</span></li>
+            <li class="active" ><i>🎵</i><span>Músicas</span></li>
+            <li onclick="perfil()"><i>👤</i><span>Perfil</span></li>
+            <li onclick="qrcode()"><i class="fa-solid fa-qrcode"></i><span>QR Code</span></li>
+        </ul>
+        <div class="bottom-buttons">
+            <button>⚙️ <span>Configurações</span></button>
+            <button>🚪 <span>Terminar Sessão</span></button>
+        </div>
+    </div>
+
+
+    <div class="main-content">
+        <div class="main-header">
+            <div class="toggle-button" onclick="toggleSidebar()" style="cursor: pointer;">
+                <i class="fa-solid fa-bars" style="font-weight: bolder;"></i>
+            </div>
+            <button onclick="showAddModal()">Adicionar Música</button>
+
+            
+            <img src="user.jpg" alt="Foto do Usuário">
+        </div>
+        <div class="search-bar">
+            <input type="text" id="search-input" placeholder="Pesquisar músicas..." onclick="pesquisar()">
+            <i class="fa-solid fa-search"></i>
+        </div>
+
+        <div class="songs-table">
+            <table style="overflow-y: scroll;">
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Artista</th>
+                        <th>Gênero</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="songs-list">
+                    <!-- Conteúdo gerado dinamicamente -->
+                </tbody>
+            </table>
+            <div class="no-songs" id="no-songs">Nenhuma música adicionada ainda.</div>
+        </div>
+    </div>
+
+    <!-- Modal Adicionar Música -->
+    <div class="modal-overlay" id="add-modal">
+        <div class="modal">
+            <h3>Adicionar Música</h3>
+            <input type="text" id="Titulo" placeholder="Título">
+            <input type="text" id="Artista" placeholder="Artista">
+            <input type="text" id="Genero" placeholder="Gênero">
+            <button onclick="AdicionarMusica()">Adicionar</button>
+            <button class="close-btn" onclick="closeAddModal()">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Modal Editar Música -->
+    <div class="modal-overlay" id="edit-modal">
+        <div class="modal">
+            <h3>Editar Música</h3>
+            <input type="text" id="edit-title" placeholder="Título">
+            <input type="text" id="edit-artist" placeholder="Artista">
+            <input type="text" id="edit-genre" placeholder="Gênero">
+            <button onclick="saveEdit()">Salvar</button>
+            <button class="close-btn" onclick="closeEditModal()">Cancelar</button>
+        </div>
+    </div>
+
+    <script src="../javascript/Musicas.js"></script>
+</body>
+</html>

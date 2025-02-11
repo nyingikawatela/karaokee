@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela de Cadastro</title>
+    <link rel="stylesheet" href="../css/Cadastro.css">
+</head>
+<body class="hidden">
+    <div class="container">
+        <div class="register-wrapper">
+            <div class="form-section">
+                <h2 id="idcadastro">CADASTRO</h2>
+                <form id="formulario"> 
+                    <div class="input-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" name="name" placeholder="ex.: John Doe" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="ex.: johndoe1232gmail.com" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="phone">Telefone</label>
+                        <input type="tel" id="phone" name="phone" placeholder="ex.: 934978139" required>
+                    </div>
+                    <div class="input-group">
+                        <label for="password">Senha</label>
+                        <input type="password" id="password" name="password" placeholder="ex.: **********" required>
+                    </div>
+                    <button type="submit" class="register-button">Cadastrar</button>
+                    <p id="Login">
+                        Já tem uma conta? <a href="Login.html">Faça login</a>
+                    </p>
+                </form>
+            </div>
+            <div class="image-section">
+                <img src="../assets/Free Photo _ Music arrangement with black headphones with copy space.jpeg" alt="">
+            </div>
+        </div>
+    </div>
+    <script src="../javascript/Cadastro.js"></script>
+</body>
+</html>

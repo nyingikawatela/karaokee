@@ -18,17 +18,11 @@
     
     
     <script>
-        const songList = document.getElementById("songs-list");
-        const searchInput = document.getElementById("search-input");
-        const noSongsMessage = document.getElementById("no-songs");
-        const welcomeScreen = document.getElementById("welcome-screen");
-        const musicContainer = document.getElementById("music-container");
-        let songs = [];
-
         function enterApp() {
             const username = document.getElementById("username").value.trim();
             if (username) {
                 localStorage.setItem("username", username);
+                window.location.href = "https://nyingikawatela.github.io/karaokee/musicacliente.html"; // Troca para a página boasvindasuser.html se o nome for preenchido.
             } else {
                 alert("Por favor, insira seu nome.");
             }

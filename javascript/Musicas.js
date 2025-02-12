@@ -1,7 +1,7 @@
 async function checkAuthentication() {
   try {
     // Aguardando a resolução da promise do fetch
-    const response = await fetch("http://localhost:3000/checkAuthenticated", {
+    const response = await fetch("https://sistema-karaoke-backend.onrender.com/checkAuthenticated", {
       method: "GET",
       credentials: "include",  // Necessário para enviar cookies
     });
@@ -59,7 +59,7 @@ async function AdicionarMusica(){
    
 
   try {
-      const response = await fetch("http://localhost:3000/adicionarMusica", {
+      const response = await fetch("https://sistema-karaoke-backend.onrender.com/adicionarMusica", {
           method: "POST",
           credentials: "include",
           headers: {
@@ -88,7 +88,7 @@ async function AdicionarMusica(){
 async function fetchMusicas() {
   try {
       // Fazer a requisição para a API
-      const response = await fetch("http://localhost:3000/Musicas/BuscarTodos");
+      const response = await fetch("https://sistema-karaoke-backend.onrender.com/Musicas/BuscarTodos");
       const data = await response.json();
 
       // Obter os elementos da tabela

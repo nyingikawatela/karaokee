@@ -54,7 +54,7 @@ async function AdicionarMusica(){
     const Artista = document.getElementById("Artista").value
     const Genero = document.getElementById("Genero").value
 
-    const musicaDados = {Titulo,Artista,Genero,};
+    const musicaDados = { Titulo,Artista,Genero };
 
    
 

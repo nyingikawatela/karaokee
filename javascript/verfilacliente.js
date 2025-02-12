@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         try {
             const response = await fetch(`https://sistema-karaoke-backend.onrender.com/clientes/fila/${adminId}`);
             const data = await response.json();
-
+            console.log(data)
             if (!data.fila || data.fila.length === 0) {
                 queueList.innerHTML = `<tr><td colspan="4">Nenhum cliente na fila.</td></tr>`;
                 return;

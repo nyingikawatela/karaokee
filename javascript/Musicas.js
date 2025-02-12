@@ -139,7 +139,7 @@ function qrcode(){
 fetchMusicas();
 async function deletarMusica(id) {
   try {
-      const response = await fetch("http://localhost:3000/musicas/apagar", {
+      const response = await fetch("https://sistema-karaoke-backend.onrender.com/musicas/apagar", {
           method: "DELETE",
           credentials: "include",  // Necessário para enviar cookies
           headers: {
@@ -164,7 +164,7 @@ async function deletarMusica(id) {
 
 async function  terminarSessao()
 {
-    const response =  await fetch("http://localhost:3000/logout", {
+    const response =  await fetch("https://sistema-karaoke-backend.onrender.com/logout", {
         method: "GET",
         credentials: "include", // Garante o envio do cookie
       });

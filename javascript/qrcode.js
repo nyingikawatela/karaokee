@@ -10,7 +10,7 @@ function qrcode(){
 
 async function gerar(){
     try {
-        const response = await fetch("http://localhost:3000/admin/qrcode", {
+        const response = await fetch("https://sistema-karaoke-backend.onrender.com/admin/qrcode", {
             method: "GET",
             credentials: "include",
             headers: {

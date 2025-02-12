@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     async function fetchMusicas() {
         try {
-            const response = await fetch(`/clientes/musicas/${adminId}`);
+            const response = await fetch(`https://sistema-karaoke-backend.onrender.com/clientes/musicas/${adminId}`);
             const data = await response.json();
 
             if (!data.musicas || data.musicas.length === 0) {
@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     async function adicionarFila(clienteNome, musicaID) {
         try {
-            const response = await fetch(`/fila/${adminId}`, {
+            const response = await fetch(`https://sistema-karaoke-backend.onrender.com/fila/${adminId}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

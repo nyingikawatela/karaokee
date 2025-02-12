@@ -1,7 +1,7 @@
 async function checkAuthentication() {
   try {
     // Aguardando a resolução da promise do fetch
-    const response = await fetch("http://localhost:3000/checkAuthenticated", {
+    const response = await fetch("https://sistema-karaoke-backend.onrender.com/checkAuthenticated", {
       method: "GET",
       credentials: "include",  // Necessário para enviar cookies
     });
@@ -35,7 +35,7 @@ function toggleSidebar() {
 checkAuthentication();
 async function  terminarSessao()
 {
-    const response =  await fetch("http://localhost:3000/logout", {
+    const response =  await fetch("https://sistema-karaoke-backend.onrender.com/logout", {
         method: "GET",
         credentials: "include", // Garante o envio do cookie
       });
@@ -61,7 +61,7 @@ function qrcode(){
 
 async function carregarFila() {
   try {
-      const response = await fetch("http://localhost:3000/fila", {
+      const response = await fetch("https://sistema-karaoke-backend.onrender.com/fila", {
           method: "GET",
           headers: { "Content-Type": "application/json" }
       });
@@ -117,7 +117,7 @@ async function removerFila(filaID) {
   if (!confirm("Deseja realmente remover este cliente da fila?")) return;
 
   try {
-      const response = await fetch("http://localhost:3000/removerusuario", {
+      const response = await fetch("https://sistema-karaoke-backend.onrender.com/removerusuario", {
           method: "DELETE",
           credentials: "include",
           headers: { "Content-Type": "application/json" },

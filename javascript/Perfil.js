@@ -1,7 +1,7 @@
 async function checkAuthentication() {
     try {
       // Aguardando a resolução da promise do fetch
-      const response = await fetch("http://localhost:3000/checkAuthenticated", {
+      const response = await fetch("https://sistema-karaoke-backend.onrender.com/checkAuthenticated", {
         method: "GET",
         credentials: "include",  // Necessário para enviar cookies
       });
@@ -66,7 +66,7 @@ function qrcode(){
  }
  async function  terminarSessao()
 {
-    const response =  await fetch("http://localhost:3000/logout", {
+    const response =  await fetch("https://sistema-karaoke-backend.onrender.com/logout", {
         method: "GET",
         credentials: "include", // Garante o envio do cookie
       });

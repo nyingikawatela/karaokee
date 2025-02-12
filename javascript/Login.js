@@ -1,7 +1,7 @@
 async function checkAuthentication() {
   try {
     // Aguardando a resolução da promise do fetch
-    const response = await fetch("http://localhost:3000/checkAuthenticated", {
+    const response = await fetch("https://sistema-karaoke-backend.onrender.com/checkAuthenticated", {
       method: "GET",
       credentials: "include",  // Necessário para enviar cookies
     });
@@ -59,7 +59,7 @@ document.getElementById("formulario").addEventListener("submit", async (evt) => 
     const dados = { email, senha };
 
     try {
-        const response = await fetch("http://localhost:3000/loginAdmin", {
+        const response = await fetch("https://sistema-karaoke-backend.onrender.com/loginAdmin", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(dados),

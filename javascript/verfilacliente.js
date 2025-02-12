@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     async function fetchFila() {
         try {
-            const response = await fetch(`/clientes/fila/${adminId}`);
+            const response = await fetch(`https://sistema-karaoke-backend.onrender.com/clientes/fila/${adminId}`);
             const data = await response.json();
 
             if (!data.fila || data.fila.length === 0) {

@@ -6,7 +6,6 @@ async function checkAuthentication() {
       credentials: "include",  // Necessário para enviar cookies
     });
 
-    // Exibe o status da resposta após a promessa ser resolvida
 
 
     if (response.ok) {
@@ -59,5 +58,80 @@ function perfil(){
 function qrcode(){
   window.location.href = "qrcode.html";
 }
+
+async function carregarFila() {
+  try {
+      const response = await fetch("http://localhost:3000/fila", {
+          method: "GET",
+          headers: { "Content-Type": "application/json" }
+      });
+
+      if (!response.ok) throw new Error("Erro ao buscar a fila");
+      
+      const data = await response.json();
+      const fila = data.fila; // Certifique-se de que o backend retorna `{ fila: [...] }`
+
+      const tbody = document.getElementById("queue-body");
+      const noQueueMessage = document.getElementById("no-queue");
+
+      tbody.innerHTML = ""; // Limpa a tabela antes de adicionar novos itens
+
+      if (fila.length === 0) {
+          noQueueMessage.style.display = "block";
+          return;
+      }
+
+      noQueueMessage.style.display = "none";
+
+      fila.forEach((cliente) => {
+          const tr = document.createElement("tr");
+
+          tr.innerHTML = `
+              <td>${cliente.clienteNome}</td>
+              <td>${cliente.musica.nome}</td>
+              <td>${cliente.status}</td>
+              <td><button class="delete-btn" data-id="${cliente.id}">🗑️</button></td>
+              <td><input type="checkbox" class="select-item" data-id="${cliente.id}"></td>
+          `;
+
+          tbody.appendChild(tr);
+      });
+
+      // Adiciona evento aos botões de remoção
+      document.querySelectorAll(".delete-btn").forEach(button => {
+          button.addEventListener("click", function() {
+              const filaID = this.getAttribute("data-id");
+              removerFila(filaID);
+          });
+      });
+
+  } catch (error) {
+      console.error("Erro ao carregar a fila:", error);
+  }
+}
+
+// Chamar a função quando a página carregar
+document.addEventListener("DOMContentLoaded", carregarFila);
+
+async function removerFila(filaID) {
+  if (!confirm("Deseja realmente remover este cliente da fila?")) return;
+
+  try {
+      const response = await fetch("http://localhost:3000/removerusuario", {
+          method: "DELETE",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ filaID }) // Envia o ID no corpo da requisição
+      });
+
+      if (!response.ok) throw new Error("Erro ao remover da fila");
+
+      alert("Cliente removido com sucesso!");
+      carregarFila(); // Atualiza a tabela após a remoção
+  } catch (error) {
+      console.error("Erro ao remover da fila:", error);
+  }
+}
+
+
 
     

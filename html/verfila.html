@@ -27,47 +27,5 @@
             </table>
         </div>
     </div>
-    <script>
-        const queueList = document.getElementById("queue-list");
-        let queue = [];
-        const userName = localStorage.getItem("userName");
-
-        async function fetchQueue() {
-            try {
-                const response = await fetch("http://localhost:3000/fila");
-                queue = await response.json();
-                displayQueue();
-            } catch (error) {
-                console.error("Erro ao buscar a fila:", error);
-            }
-        }
-
-        function displayQueue() {
-            queueList.innerHTML = "";
-            queue.forEach((entry, index) => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
-                    <td>${index + 1}</td>
-                    <td>${entry.name}</td>
-                    <td>${entry.song}</td>
-                    <td>
-                        ${entry.name === userName ? `<button class="leave-button" onclick="leaveQueue()">Sair</button>` : ""}
-                    </td>
-                `;
-                queueList.appendChild(row);
-            });
-        }
-
-        function leaveQueue() {
-            fetch("http://localhost:3000/fila/sair", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ name: userName })
-            }).then(() => fetchQueue());
-        }
-
-        setInterval(fetchQueue, 3000);
-        fetchQueue();
-    </script>
 </body>
 </html>

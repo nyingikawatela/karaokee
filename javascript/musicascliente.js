@@ -1,59 +1,90 @@
-const params = new URLSearchParams(window.location.search);
-const adminId = params.get("adminID"); // Pegando o ID do admin da URL
+document.addEventListener("DOMContentLoaded", async function () {
+    const songsList = document.getElementById("songs-list");
+    const noSongsMessage = document.getElementById("no-songs");
 
-async function fetchMusicas() {
-    try {
-        // Garantir que temos um ID válido
-        if (!adminId) {
-            console.error("Nenhum ID de administrador fornecido.");
-            return;
-        }
+    // Pegando adminID da URL
+    const params = new URLSearchParams(window.location.search);
+    const adminId = params.get("adminID");
 
-        // Fazer a requisição para a API
-        const response = await fetch(`http://localhost:3000/clientes/musicas?id=${adminId}`);
-        const data = await response.json();
+    if (!adminId) {
+        console.error("adminID não encontrado na URL!");
+        noSongsMessage.textContent = "Erro: adminID ausente.";
+        noSongsMessage.style.display = "block";
+        return;
+    }
 
-        // Obter os elementos da tabela
-        const songsList = document.getElementById("songs-list");
-        const noSongsMessage = document.getElementById("no-songs");
+    // Pegando o nome do usuário salvo no localStorage
+    const clienteNome = localStorage.getItem("username");
+    if (!clienteNome) {
+        alert("Nome do cliente não encontrado! Redirecionando...");
+        window.location.href = "welcomeuser.html"; // Redireciona para o input do nome
+        return;
+    }
 
-        // Limpar o conteúdo existente
-        songsList.innerHTML = "";
+    async function fetchMusicas() {
+        try {
+            const response = await fetch(`/clientes/musicas/${adminId}`);
+            const data = await response.json();
 
-        if (data.musicas && data.musicas.length > 0) {
-            noSongsMessage.style.display = "none"; // Esconder a mensagem de "Nenhuma música"
+            if (!data.musicas || data.musicas.length === 0) {
+                noSongsMessage.style.display = "block";
+                songsList.innerHTML = "";
+                return;
+            }
 
-            // Iterar sobre os dados e adicionar à tabela
-            data.musicas.forEach((musica) => {
-                const row = document.createElement("tr");
-                row.innerHTML = `
+            noSongsMessage.style.display = "none";
+            songsList.innerHTML = "";
+
+            data.musicas.forEach(musica => {
+                const tr = document.createElement("tr");
+
+                tr.innerHTML = `
                     <td>${musica.titulo}</td>
                     <td>${musica.artista}</td>
-                    <td>${musica.genero}</td>
-                    <td>
-                        <button onclick="editarMusica(${musica.id})">Editar</button>
-                        <button onclick="deletarMusica(${musica.id})">Deletar</button>
-                    </td>
+                    <td>${musica.genero || "N/A"}</td>
+                    <td><button class="select-btn" data-id="${musica.id}">🎵 Selecionar</button></td>
                 `;
-                songsList.appendChild(row);
+
+                songsList.appendChild(tr);
             });
-        } else {
-            noSongsMessage.style.display = "block"; // Mostrar a mensagem de "Nenhuma música"
+
+            document.querySelectorAll(".select-btn").forEach(button => {
+                button.addEventListener("click", function () {
+                    const musicaID = this.getAttribute("data-id");
+                    adicionarFila(clienteNome, musicaID);
+                });
+            });
+
+        } catch (error) {
+            console.error("Erro ao buscar músicas:", error);
         }
-    } catch (error) {
-        console.error("Erro ao buscar músicas:", error);
     }
-}
 
-// Função para editar (exemplo, pode ser implementada depois)
-function editarMusica(id) {
-    alert(`Editar música com ID: ${id}`);
-}
+    async function adicionarFila(clienteNome, musicaID) {
+        try {
+            const response = await fetch(`/fila/${adminId}`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    clienteNome,
+                    musicaID
+                })
+            });
 
-// Função para deletar (exemplo, pode ser implementada depois)
-function deletarMusica(id) {
-    alert(`Deletar música com ID: ${id}`);
-}
+            const data = await response.json();
+            if (response.ok) {
+                alert("Adicionado à fila com sucesso!");
+                window.location.href = `verfila.html?adminID=${adminId}`;
+            } else {
+                alert("Erro ao adicionar na fila: " + data.error);
+            }
+        } catch (error) {
+            console.error("Erro ao adicionar à fila:", error);
+            alert("Erro inesperado.");
+        }
+    }
 
-// Chamar a função ao carregar a página
-document.addEventListener("DOMContentLoaded", fetchMusicas);
+    fetchMusicas();
+});

@@ -64,3 +64,18 @@ function dashboard(){
 function qrcode(){
   window.location.href = "qrcode.html";
  }
+ async function  terminarSessao()
+{
+    const response =  await fetch("http://localhost:3000/logout", {
+        method: "GET",
+        credentials: "include", // Garante o envio do cookie
+      });
+  
+      if (response.ok) {
+        const data =  response.json();
+        console.log(data.message); // Exibe: "Sessão encerrada com sucesso!"
+        window.location.href = "Login.html";
+      } else {
+        console.error("Erro ao realizar logout:", response.statusText);
+      }
+} 

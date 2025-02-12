@@ -141,6 +141,7 @@ async function deletarMusica(id) {
   try {
       const response = await fetch("http://localhost:3000/musicas/apagar", {
           method: "DELETE",
+          credentials: "include",  // Necessário para enviar cookies
           headers: {
               "Content-Type": "application/json"
           },

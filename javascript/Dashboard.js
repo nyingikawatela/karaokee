@@ -88,7 +88,7 @@ async function carregarFila() {
 
           tr.innerHTML = `
               <td>${cliente.clienteNome}</td>
-              <td>${cliente.musica.nome}</td>
+              <td>${cliente.musica.titulo} - ${cliente.musica.artista}</td>
               <td>${cliente.status}</td>
               <td><button class="delete-btn" data-id="${cliente.id}">🗑️</button></td>
               <td><input type="checkbox" class="select-item" data-id="${cliente.id}"></td>
@@ -119,8 +119,9 @@ async function removerFila(filaID) {
   try {
       const response = await fetch("http://localhost:3000/removerusuario", {
           method: "DELETE",
+          credentials: "include",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ filaID }) // Envia o ID no corpo da requisição
+          body: JSON.stringify({ filaID }) 
       });
 
       if (!response.ok) throw new Error("Erro ao remover da fila");

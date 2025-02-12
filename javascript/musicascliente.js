@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         try {
             const response = await fetch(`https://sistema-karaoke-backend.onrender.com/clientes/musicas/${adminId}`);
             const data = await response.json();
-
+            console.log(data)
             if (!data.musicas || data.musicas.length === 0) {
                 noSongsMessage.style.display = "block";
                 songsList.innerHTML = "";

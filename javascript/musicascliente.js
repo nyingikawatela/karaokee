@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     async function fetchMusicas() {
         try {
-            const response = await fetch(`https://sistema-karaoke-backend.onrender.com/clientes/musicas/${adminId}`);
+            const response = await fetch(`https://sistema-karaoke-backend.onrender.com/clientes/musicas?${adminId}`);
             const data = await response.json();
             console.log(data)
             if (!data.musicas || data.musicas.length === 0) {

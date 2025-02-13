@@ -87,7 +87,11 @@ async function AdicionarMusica(){
 async function fetchMusicas() {
   try {
       // Fazer a requisição para a API
-      const response = await fetch("https://sistema-karaoke-backend.onrender.com/Musicas/BuscarTodos");
+      const response = await fetch("https://sistema-karaoke-backend.onrender.com/Musicas/BuscarTodos",{
+          method: "GET",
+          credentials: "include",
+          headers: { "Content-Type": "application/json" }
+      });
       const data = await response.json();
       alert("esta", data)
       // Obter os elementos da tabela

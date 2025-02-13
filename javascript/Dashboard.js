@@ -63,6 +63,7 @@ async function carregarFila() {
   try {
       const response = await fetch("https://sistema-karaoke-backend.onrender.com/fila", {
           method: "GET",
+          credentials: "include",
           headers: { "Content-Type": "application/json" }
       });
 

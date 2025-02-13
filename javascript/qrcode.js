@@ -4,8 +4,8 @@ function musicas(){
 function perfil(){
    window.location.href = "Perfil.html";
 }
-function qrcode(){
-  window.location.href = "qrcode.html";
+function dashboard(){
+  window.location.href = "Dashboard.html";
 }
 
 async function gerar(){
@@ -73,3 +73,19 @@ function imprimir() {
         alert("Imagem não encontrada!");
     }
 }
+
+async function  terminarSessao()
+{
+    const response =  await fetch("https://sistema-karaoke-backend.onrender.com/logout", {
+        method: "GET",
+        credentials: "include", // Garante o envio do cookie
+      });
+  
+      if (response.ok) {
+        const data =  response.json();
+        console.log(data.message); // Exibe: "Sessão encerrada com sucesso!"
+        window.location.href = "Login.html";
+      } else {
+        console.error("Erro ao realizar logout:", response.statusText);
+      }
+} 

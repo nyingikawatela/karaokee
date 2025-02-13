@@ -87,7 +87,7 @@ async function carregarFila() {
       fila.forEach((cliente, indice) => {
           const tr = document.createElement("tr");
           tr.innerHTML = `
-              <td>${indice+1}</td>
+              <td>${indice + 1}</td>
               <td>${cliente.clienteNome}</td>
               <td>${cliente.musica.titulo} - ${cliente.musica.artista}</td>
               <td>${cliente.status}</td>

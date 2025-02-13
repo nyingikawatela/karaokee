@@ -123,6 +123,7 @@ async function fetchMusicas() {
   }
 }
 
+fetchMusicas(); // Inicialmente carregar as músicas
 
 
 function dashboard(){

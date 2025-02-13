@@ -41,6 +41,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    setInterval(fetchFila(), 3000);
+    
     
 });
+setInterval(fetchFila(), 3000);

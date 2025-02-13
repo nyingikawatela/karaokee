@@ -135,7 +135,7 @@ function qrcode(){
   window.location.href = "qrcode.html";
 }
 
-setInterval(fetchMusicas(), 3000)
+
 
 async function deletarMusica(id) {
   try {
@@ -161,7 +161,7 @@ async function deletarMusica(id) {
       alert("Erro ao conectar com o servidor.");
   }
 }
-
+setInterval(fetchMusicas(), 3000)
 async function  terminarSessao()
 {
     const response =  await fetch("https://sistema-karaoke-backend.onrender.com/logout", {

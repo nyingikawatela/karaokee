@@ -10,9 +10,6 @@ body {
     height: 100vh;
     overflow: hidden;
 }
-body.hidden {
-    display: none; /* Oculta o corpo para evitar o piscar das telas */
-  }
 
 /* Sidebar Styles */
 .sidebar {

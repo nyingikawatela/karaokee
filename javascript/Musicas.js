@@ -67,7 +67,6 @@ async function AdicionarMusica(){
           },
           body: JSON.stringify(musicaDados),
       });
-      alert(response.status);
       if (response.ok) {
           const data = await response.json();
           alert("Música adicionada com sucesso:", data);
@@ -114,6 +113,7 @@ async function fetchMusicas() {
                   </td>
               `;
               songsList.appendChild(row);
+              location.reload()
           });
       } else {
           noSongsMessage.style.display = "block"; // Mostrar a mensagem de "Nenhuma música"

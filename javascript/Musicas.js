@@ -128,7 +128,7 @@ async function fetchMusicas() {
 }
 
 fetchMusicas(); // Inicialmente carregar as músicas
-
+setInterval(fetchMusicas(), 3000)
 
 function dashboard(){
   window.location.href = "Dashboard.html";

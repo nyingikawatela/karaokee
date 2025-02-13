@@ -86,7 +86,5 @@ document.addEventListener("DOMContentLoaded", async function () {
         }
     }
 
-    
-    
+    fetchMusicas();
 });
-setInterval(fetchMusicas(), 3000)

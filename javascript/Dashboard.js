@@ -112,7 +112,6 @@ async function carregarFila() {
 
 
 document.addEventListener("DOMContentLoaded", carregarFila);
-setInterval(carregarFila, 3000)
 
 async function removerFila(filaID) {
   if (!confirm("Deseja realmente remover este cliente da fila?")) return;

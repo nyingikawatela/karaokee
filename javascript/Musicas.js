@@ -93,8 +93,6 @@ async function fetchMusicas() {
           headers: { "Content-Type": "application/json" }
       });
       const data = await response.json();
-      alert("esta", data)
-      // Obter os elementos da tabela
       const songsList = document.getElementById("songs-list");
       const noSongsMessage = document.getElementById("no-songs");
 
@@ -127,8 +125,8 @@ async function fetchMusicas() {
   }
 }
 
-fetchMusicas(); // Inicialmente carregar as músicas
-setInterval(fetchMusicas(), 3000)
+fetchMusicas(); 
+setInterval(fetchMusicas, 3000)
 
 function dashboard(){
   window.location.href = "Dashboard.html";

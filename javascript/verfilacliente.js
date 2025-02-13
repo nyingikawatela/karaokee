@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 
     fetchFila()
-    setInterval( fetchFila(), 3000)
+    setInterval( fetchFila, 3000)
 });
-setInterval( fetchFila(), 3000)
+
 

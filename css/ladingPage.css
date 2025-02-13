@@ -4,9 +4,7 @@
     text-decoration: none;
     font-family: Arial, Sans Serif;
 }
-body.hidden {
-    display: none; /* Oculta o corpo para evitar o piscar das telas */
-  }
+
 button{
     cursor: pointer;
 }

@@ -113,7 +113,7 @@ async function fetchMusicas() {
                   </td>
               `;
               songsList.appendChild(row);
-              location.reload()
+              
           });
       } else {
           noSongsMessage.style.display = "block"; // Mostrar a mensagem de "Nenhuma música"
@@ -135,8 +135,8 @@ function qrcode(){
   window.location.href = "qrcode.html";
 }
 
+setInterval(fetchMusicas(), 3000)
 
-fetchMusicas();
 async function deletarMusica(id) {
   try {
       const response = await fetch("https://sistema-karaoke-backend.onrender.com/musicas/apagar", {

@@ -89,7 +89,7 @@ async function fetchMusicas() {
       // Fazer a requisição para a API
       const response = await fetch("https://sistema-karaoke-backend.onrender.com/Musicas/BuscarTodos");
       const data = await response.json();
-
+      alert("esta", data)
       // Obter os elementos da tabela
       const songsList = document.getElementById("songs-list");
       const noSongsMessage = document.getElementById("no-songs");

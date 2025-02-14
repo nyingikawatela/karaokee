@@ -144,7 +144,7 @@ async function eliminar(){
         credentials: "include",
         headers: { "Content-Type": "application/json" },
     });
-
+    console.log(response);
     if (!response.ok) throw new Error("Erro ao Limpar fila");
 
     alert("Fila removida com sucesso!");

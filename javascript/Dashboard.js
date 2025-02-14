@@ -137,4 +137,19 @@ async function removerFila(filaID) {
 
 
 
-    
+async function eliminar(){
+  try {
+    const response = await fetch("https://sistema-karaoke-backend.onrender.com/fila/delete", {
+        method: "DELETE",
+        credentials: "include",
+        headers: { "Content-Type": "application/json" },
+    });
+
+    if (!response.ok) throw new Error("Erro ao Limpar fila");
+
+    alert("Fila removida com sucesso!");
+    carregarFila(); // Atualiza a tabela após a remoção
+} catch (error) {
+    console.error("Erro ao remover da fila:", error);
+}
+}
